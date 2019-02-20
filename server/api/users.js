@@ -28,3 +28,14 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  const {id} = req.user.dataValues
+  req.body.userId = id
+  try {
+    const user = await UserInfo.create(req.body)
+    res.json(user)
+  } catch (err) {
+    console.error(err)
+  }
+})

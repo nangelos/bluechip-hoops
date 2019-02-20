@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import {addUserInfo} from '../../store'
 import {connect} from 'react-redux'
 import {schoolList} from '../../constants'
 
@@ -13,7 +13,9 @@ class UserData extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault()
-    console.log(this.state)
+    const {createUserInfo} = this.props
+    // console.log(this.state)
+    createUserInfo(this.state)
   }
 
   handleTextChange = evt => {
@@ -75,6 +77,8 @@ class UserData extends Component {
 }
 
 const mapState = state => ({state})
-const mapDispatch = dispatch => ({})
+const mapDispatch = dispatch => ({
+  createUserInfo: data => dispatch(addUserInfo(data))
+})
 
 export default connect(mapState, mapDispatch)(UserData)
