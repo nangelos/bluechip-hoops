@@ -8,9 +8,7 @@ const Schools = require('./schools')
  *
  *    BlogPost.belongsTo(User)
  */
-// UserInfo.belongsTo(User)
 User.hasOne(UserInfo)
-// User.belongsTo(Schools)
 User.hasOne(Schools)
 
 /**
