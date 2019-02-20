@@ -21,3 +21,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.user-input-row {
+  width: 100%;
+  margin: 5px;
+}
+
+.user-info-input {
+  width: 300px;
+}
+

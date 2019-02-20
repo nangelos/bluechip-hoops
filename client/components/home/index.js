@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {fetchUserInfo} from '../../store'
+import UserData from './update-info'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -17,11 +18,10 @@ class UserHome extends Component {
 
   render() {
     const {email, firstName, lastName, school} = this.props
-    console.log('props in render: ', this.props)
-
     return (
       <div>
         <h3>{`Welcome, Coach ${firstName} ${lastName}`}</h3>
+        <UserData />
       </div>
     )
   }
