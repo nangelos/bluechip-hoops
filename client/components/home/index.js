@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {fetchUserInfo} from '../store'
+import {fetchUserInfo} from '../../store'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -12,7 +12,7 @@ class UserHome extends Component {
 
   componentDidMount() {
     const {getUserInfo, id} = this.props
-    getUserInfo(id)
+    // getUserInfo(id)
   }
 
   render() {
