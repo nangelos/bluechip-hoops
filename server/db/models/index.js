@@ -1,5 +1,6 @@
 const User = require('./user')
 const UserInfo = require('./user-info')
+const Schools = require('./schools')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -8,6 +9,8 @@ const UserInfo = require('./user-info')
  *    BlogPost.belongsTo(User)
  */
 UserInfo.belongsTo(User)
+// User.belongsTo(Schools)
+User.hasOne(Schools)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -17,5 +20,6 @@ UserInfo.belongsTo(User)
  */
 module.exports = {
   User,
-  UserInfo
+  UserInfo,
+  Schools
 }
