@@ -1,18 +1,30 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {fetchUserInfo} from '../store'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {email} = props
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+class UserHome extends Component {
+  state = {}
+
+  componentDidMount() {
+    const {getUserInfo, id} = this.props
+    getUserInfo(id)
+  }
+
+  render() {
+    const {email, firstName, lastName, school} = this.props
+    console.log('props in render: ', this.props)
+
+    return (
+      <div>
+        <h3>{`Welcome, Coach ${firstName} ${lastName}`}</h3>
+      </div>
+    )
+  }
 }
 
 /**
@@ -20,11 +32,18 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    email: state.user.email,
+    id: state.user.id
+    // firstName: state.user.firstName,
+    // lastName: state.user.lastName,
+    // school: state.user.school
   }
 }
+const mapDispatch = dispatch => ({
+  getUserInfo: userId => dispatch(fetchUserInfo(userId))
+})
 
-export default connect(mapState)(UserHome)
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
