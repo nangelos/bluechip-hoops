@@ -14,7 +14,6 @@ class UserData extends Component {
   handleSubmit = evt => {
     evt.preventDefault()
     const {createUserInfo} = this.props
-    // console.log(this.state)
     createUserInfo(this.state)
   }
 
@@ -24,6 +23,7 @@ class UserData extends Component {
   }
 
   render() {
+    let info = this.props.state.userInfo['user-info']
     return (
       <div style={{textAlign: 'center'}}>
         <h1>Update User Info</h1>
@@ -35,6 +35,7 @@ class UserData extends Component {
                 <input
                   type="text"
                   name="firstName"
+                  // placeholder={info.firstName}
                   className="user-info-input"
                   onChange={this.handleTextChange}
                 />

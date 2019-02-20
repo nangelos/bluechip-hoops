@@ -13,15 +13,22 @@ class UserHome extends Component {
 
   componentDidMount() {
     const {getUserInfo, id} = this.props
-    // getUserInfo(id)
+    getUserInfo(id)
   }
 
   render() {
-    const {email, firstName, lastName, school} = this.props
+    const {email} = this.props
+    // console.log('home.props: ', this.props)
+    // const {firstName, lastName, school}
     return (
       <div>
-        <h3>{`Welcome, Coach ${firstName} ${lastName}`}</h3>
-        <UserData />
+        <h3>Welcome, Coach</h3>
+        {/* <h3>{`Welcome, Coach ${firstName} ${lastName}`}</h3> */}
+        <UserData
+          userInfo={
+            this.props.userInfo
+          } /*firstName={firstName} lastName={lastName} */
+        />
       </div>
     )
   }
