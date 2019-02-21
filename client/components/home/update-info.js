@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {addUserInfo} from '../../store'
+import {addUserInfo, changeUserInfo} from '../../store'
 import {connect} from 'react-redux'
 import {schoolList} from '../../constants'
 
@@ -8,18 +8,34 @@ class UserData extends Component {
     firstName: '',
     lastName: '',
     school: '',
-    role: 'Head Coach'
+    role: ''
   }
 
   handleSubmit = evt => {
     evt.preventDefault()
     const {userInfo} = this.props.state
-    const {createUserInfo} = this.props
+    const {createUserInfo, updateUserInfo} = this.props
     if (!userInfo['user-info']) {
       createUserInfo(this.state)
     } else {
       const {firstName, lastName, school, role} = userInfo['user-info']
-      console.log('udpate info')
+      this.checkEmpty(firstName, lastName, school, role)
+      updateUserInfo(this.state)
+    }
+  }
+
+  checkEmpty = (first, last, place, job) => {
+    if (this.state.firstName === '') {
+      this.setState({firstName: first})
+    }
+    if (this.state.lastName === '') {
+      this.setState({lastName: last})
+    }
+    if (this.state.school === '') {
+      this.setState({school: place})
+    }
+    if (this.state.role === '') {
+      this.setState({role: job})
     }
   }
 
@@ -61,7 +77,7 @@ class UserData extends Component {
                 <select
                   name="school"
                   onChange={this.handleTextChange}
-                  selected={info.school}
+                  defaultValue={info.school}
                 >
                   {schoolList.map((school, i) => {
                     return (
@@ -77,7 +93,7 @@ class UserData extends Component {
                 <select
                   name="role"
                   onChange={this.handleTextChange}
-                  selected={info.role}
+                  defaultValue={info.role}
                 >
                   <option value="Head Coach">Head Coach</option>
                   <option value="Assistant Coach">Assistant Coach</option>
@@ -142,7 +158,8 @@ class UserData extends Component {
 
 const mapState = state => ({state})
 const mapDispatch = dispatch => ({
-  createUserInfo: data => dispatch(addUserInfo(data))
+  createUserInfo: data => dispatch(addUserInfo(data)),
+  updateUserInfo: data => dispatch(changeUserInfo(data))
 })
 
 export default connect(mapState, mapDispatch)(UserData)

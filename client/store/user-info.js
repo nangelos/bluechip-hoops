@@ -50,6 +50,20 @@ export const addUserInfo = info => async dispatch => {
   }
 }
 
+export const changeUserInfo = info => async dispatch => {
+  let res
+  try {
+    res = await axios.put('/api/users', info)
+  } catch (err) {
+    console.error(err)
+  }
+  try {
+    dispatch(updateUserInfo(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */
@@ -58,6 +72,8 @@ export default function(state = defaultUser, action) {
     case GET_USER_INFO:
       return action.user
     case CREATE_USER_INFO:
+      return action.user
+    case UPDATE_USER_INFO:
       return action.user
     default:
       return state
