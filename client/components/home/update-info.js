@@ -53,6 +53,10 @@ class UserData extends Component {
     this.setState({[name]: value})
   }
 
+  cantChange = evt => {
+    return alert('Please contact us to change your school or role.')
+  }
+
   render() {
     let info = this.props.state.userInfo['user-info']
     return info ? (
@@ -85,8 +89,8 @@ class UserData extends Component {
                 School <br />
                 <select
                   name="school"
-                  onChange={this.handleTextChange}
-                  defaultValue={info.school}
+                  onChange={this.cantChange}
+                  value={info.school}
                 >
                   {schoolList.map((school, i) => {
                     return (
@@ -101,8 +105,8 @@ class UserData extends Component {
                 Role <br />
                 <select
                   name="role"
-                  onChange={this.handleTextChange}
-                  defaultValue={info.role}
+                  onChange={this.cantChange}
+                  value={info.role}
                 >
                   <option value="Head Coach">Head Coach</option>
                   <option value="Assistant Coach">Assistant Coach</option>
