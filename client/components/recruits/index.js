@@ -4,7 +4,11 @@ class Recruits extends Component {
   state = {}
 
   render() {
-    return <h1>This is the recruits page</h1>
+    return (
+      <div>
+        <h1>This is the recruits page</h1>
+      </div>
+    )
   }
 }
 
