@@ -5,6 +5,18 @@ body {
 
 a {
   text-decoration: none;
+  margin: 1em, 0em;
+}
+
+a:hover {
+  color: rgb(224, 226, 229);
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    border-top: none;
 }
 
 label {

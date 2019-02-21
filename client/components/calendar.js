@@ -7,7 +7,7 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{textAlign: 'center', marginBottom: '10px'}}>
         <h3 style={{color: 'white'}}>Calendar of Upcoming Events</h3>
         <iframe
           src={this.url}
