@@ -19,8 +19,17 @@ class UserData extends Component {
       createUserInfo(this.state)
     } else {
       const {firstName, lastName, school, role} = userInfo['user-info']
-      this.checkEmpty(firstName, lastName, school, role)
-      updateUserInfo(this.state)
+      const checkInfo = async () => {
+        let res
+        try {
+          res = await this.checkEmpty(firstName, lastName, school, role)
+        } catch (err) {
+          console.error(err)
+        }
+        console.log('here is state: ', this.state)
+        updateUserInfo(this.state)
+      }
+      checkInfo()
     }
   }
 

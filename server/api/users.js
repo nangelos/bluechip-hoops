@@ -36,6 +36,18 @@ router.post('/', async (req, res, next) => {
     const user = await UserInfo.create(req.body)
     res.json(user)
   } catch (err) {
-    console.error(err)
+    next(err)
+  }
+})
+
+router.put('/', async (req, res, next) => {
+  console.log('here is the req.body: ', req.body)
+  const {id} = req.user.dataValues
+  req.body.userId = id
+  try {
+    const user = await UserInfo.update(req.body, {where: {userId: id}})
+    res.json(user)
+  } catch (err) {
+    next(err)
   }
 })
