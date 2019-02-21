@@ -18,17 +18,9 @@ class UserHome extends Component {
 
   render() {
     const {email} = this.props
-    // console.log('home.props: ', this.props)
-    // const {firstName, lastName, school}
     return (
       <div>
-        <h3>Welcome, Coach</h3>
-        {/* <h3>{`Welcome, Coach ${firstName} ${lastName}`}</h3> */}
-        <UserData
-          userInfo={
-            this.props.userInfo
-          } /*firstName={firstName} lastName={lastName} */
-        />
+        <UserData userInfo={this.props.userInfo} />
       </div>
     )
   }
@@ -41,9 +33,6 @@ const mapState = state => {
   return {
     email: state.user.email,
     id: state.user.id
-    // firstName: state.user.firstName,
-    // lastName: state.user.lastName,
-    // school: state.user.school
   }
 }
 const mapDispatch = dispatch => ({

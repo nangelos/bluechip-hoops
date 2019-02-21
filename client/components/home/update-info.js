@@ -26,7 +26,6 @@ class UserData extends Component {
         } catch (err) {
           console.error(err)
         }
-        console.log('here is state: ', this.state)
         updateUserInfo(this.state)
       }
       checkInfo()
@@ -60,109 +59,115 @@ class UserData extends Component {
   render() {
     let info = this.props.state.userInfo['user-info']
     return info ? (
-      <div style={{textAlign: 'center'}}>
-        <h1>Update User Info</h1>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <div className="user-input-row">
-                First Name <br />
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder={info.firstName}
-                  className="user-info-input"
-                  onChange={this.handleTextChange}
-                />
+      <div>
+        <h2>Welcome Coach {info.lastName}</h2>
+        <div style={{textAlign: 'center'}}>
+          <h3>Update User Info</h3>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <div className="user-input-row">
+                  First Name <br />
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder={info.firstName}
+                    className="user-info-input"
+                    onChange={this.handleTextChange}
+                  />
+                </div>
+                <div className="user-input-row">
+                  Last Name <br />
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder={info.lastName}
+                    className="user-info-input"
+                    onChange={this.handleTextChange}
+                  />
+                </div>
+                <div className="user-input-row">
+                  School <br />
+                  <select
+                    name="school"
+                    onChange={this.cantChange}
+                    value={info.school}
+                  >
+                    {schoolList.map((school, i) => {
+                      return (
+                        <option key={i} value={school}>
+                          {school}
+                        </option>
+                      )
+                    })}
+                  </select>
+                </div>
+                <div className="user-input-row">
+                  Role <br />
+                  <select
+                    name="role"
+                    onChange={this.cantChange}
+                    value={info.role}
+                  >
+                    <option value="Head Coach">Head Coach</option>
+                    <option value="Assistant Coach">Assistant Coach</option>
+                  </select>
+                </div>
               </div>
-              <div className="user-input-row">
-                Last Name <br />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder={info.lastName}
-                  className="user-info-input"
-                  onChange={this.handleTextChange}
-                />
-              </div>
-              <div className="user-input-row">
-                School <br />
-                <select
-                  name="school"
-                  onChange={this.cantChange}
-                  value={info.school}
-                >
-                  {schoolList.map((school, i) => {
-                    return (
-                      <option key={i} value={school}>
-                        {school}
-                      </option>
-                    )
-                  })}
-                </select>
-              </div>
-              <div className="user-input-row">
-                Role <br />
-                <select
-                  name="role"
-                  onChange={this.cantChange}
-                  value={info.role}
-                >
-                  <option value="Head Coach">Head Coach</option>
-                  <option value="Assistant Coach">Assistant Coach</option>
-                </select>
-              </div>
-            </div>
-            <input type="submit" value="Update" />
-          </form>
+              <input type="submit" value="Update" />
+            </form>
+          </div>
         </div>
       </div>
     ) : (
-      <div style={{textAlign: 'center'}}>
-        <h1>Update User Info</h1>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <div className="user-input-row">
-                First Name <br />
-                <input
-                  type="text"
-                  name="firstName"
-                  className="user-info-input"
-                  onChange={this.handleTextChange}
-                />
+      <div>
+        <h3>Welcome Coach</h3>
+        <div style={{textAlign: 'center'}}>
+          <h1>Update User Info</h1>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <div className="user-input-row">
+                  First Name <br />
+                  <input
+                    type="text"
+                    name="firstName"
+                    className="user-info-input"
+                    onChange={this.handleTextChange}
+                  />
+                </div>
+                <div className="user-input-row">
+                  Last Name <br />
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="user-info-input"
+                    onChange={this.handleTextChange}
+                  />
+                </div>
+                <div className="user-input-row">
+                  School <br />
+                  <select name="school" onChange={this.handleTextChange}>
+                    {schoolList.map((school, i) => {
+                      return (
+                        <option key={i} value={school}>
+                          {school}
+                        </option>
+                      )
+                    })}
+                  </select>
+                </div>
+                <div className="user-input-row">
+                  Role <br />
+                  <select name="role" onChange={this.handleTextChange}>
+                    <option value="Head Coach">Head Coach</option>
+                    <option value="Assistant Coach">Assistant Coach</option>
+                  </select>
+                </div>
               </div>
-              <div className="user-input-row">
-                Last Name <br />
-                <input
-                  type="text"
-                  name="lastName"
-                  className="user-info-input"
-                  onChange={this.handleTextChange}
-                />
-              </div>
-              <div className="user-input-row">
-                School <br />
-                <select name="school" onChange={this.handleTextChange}>
-                  {schoolList.map((school, i) => {
-                    return (
-                      <option key={i} value={school}>
-                        {school}
-                      </option>
-                    )
-                  })}
-                </select>
-              </div>
-              <div className="user-input-row">
-                Role <br />
-                <select name="role" onChange={this.handleTextChange}>
-                  <option value="Head Coach">Head Coach</option>
-                  <option value="Assistant Coach">Assistant Coach</option>
-                </select>
-              </div>
-            </div>
-            <input type="submit" value="Update" />
-          </form>
+              <input type="submit" value="Update" />
+            </form>
+          </div>
         </div>
       </div>
     )
