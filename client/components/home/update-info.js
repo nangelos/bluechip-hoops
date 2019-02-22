@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {addUserInfo, changeUserInfo} from '../../store'
 import {connect} from 'react-redux'
-import {schoolList} from '../../constants'
+import {collegeList} from '../../constants'
 
 class UserData extends Component {
   state = {
@@ -93,7 +93,7 @@ class UserData extends Component {
                     onChange={this.cantChange}
                     value={info.school}
                   >
-                    {schoolList.map((school, i) => {
+                    {collegeList.map((school, i) => {
                       return (
                         <option key={i} value={school}>
                           {school}
@@ -148,7 +148,7 @@ class UserData extends Component {
                 <div className="user-input-row">
                   School <br />
                   <select name="school" onChange={this.handleTextChange}>
-                    {schoolList.map((school, i) => {
+                    {collegeList.map((school, i) => {
                       return (
                         <option key={i} value={school}>
                           {school}
