@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Recruits, Calendar} from './components'
+import {Login, Signup, UserHome, Recruits, Calendar, Staff} from './components'
 import {me} from './store'
 
 /**
@@ -26,6 +26,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/recruits" component={Recruits} />
             <Route path="/calendar" component={Calendar} />
+            <Route path="/staff" component={Staff} />
             <Route path="/" component={UserHome} />
           </Switch>
         )}
