@@ -38,10 +38,18 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin, isHeadCoach}) => (
  * CONTAINER
  */
 const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.isAdmin,
-    isHeadCoach: state.user.role === 'Head Coach'
+  console.log('navbar mapState: ', state)
+  if (state.userInfo['user-info']) {
+    return {
+      isLoggedIn: !!state.user.id,
+      isAdmin: state.user.isAdmin,
+      isHeadCoach: state.userInfo['user-info'].role === 'Head Coach'
+    }
+  } else {
+    return {
+      isLoggedIn: !!state.user.id,
+      isAdmin: state.user.isAdmin
+    }
   }
 }
 
