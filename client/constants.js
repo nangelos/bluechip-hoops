@@ -1,4 +1,4 @@
-export const collegeList = [
+const collegeList = [
   'Abilene Christian University',
   'Air Force',
   'Akron',
@@ -352,7 +352,7 @@ export const collegeList = [
   'Youngstown State University'
 ]
 
-export const schoolArray = [
+const collegeArray = [
   {college: 'Abilene Christian University', mascot: 'Wildcats'},
   {college: 'Akron', mascot: 'Zips'},
   {college: 'Alabama', mascot: 'Crimson Tide'},
@@ -705,3 +705,8 @@ export const schoolArray = [
   {college: 'Yale University', mascot: 'Bulldogs'},
   {college: 'Youngstown State University', mascot: 'Penguins'}
 ]
+
+module.exports = {
+  collegeList,
+  collegeArray
+}

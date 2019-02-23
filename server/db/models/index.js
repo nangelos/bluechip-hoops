@@ -6,7 +6,7 @@ const Schools = require('./schools')
  **  Model Associations
  */
 User.hasOne(UserInfo)
-User.hasOne(Schools)
+Schools.hasMany(UserInfo)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
