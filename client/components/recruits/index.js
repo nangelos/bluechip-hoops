@@ -20,6 +20,16 @@ const recruitList = [
     rivalsRanking: '1',
     espnRanking: '1',
     class: '2019'
+  },
+  {
+    fullName: 'Chris Paul',
+    highSchool: 'Winston Salem South',
+    position: 'PG',
+    height: "6'0",
+    weight: '165',
+    rivalsRanking: '3',
+    espnRanking: '3',
+    class: '2019'
   }
 ]
 
@@ -42,7 +52,7 @@ class Recruits extends Component {
               <th className="recruits-header">ESPN Ranking</th>
               <th className="recruits-header">Class</th>
             </tr>
-
+            {/*eslint-disable complexity*/}
             {recruitList.map((player, i) => {
               return (
                 <tr key={player.fullName}>
