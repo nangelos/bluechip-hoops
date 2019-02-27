@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
 
 class RecruitTable extends Component {
-  state = {}
+  state = {year: 2019}
 
   years = [2019, 2020, 2021, 2022]
+
+  changeYear = evt => {
+    const {value} = evt.target
+    this.setState({year: value})
+  }
 
   render() {
     const {recruitList} = this.props
@@ -12,10 +17,16 @@ class RecruitTable extends Component {
         <ul className="tab-row">
           {this.years.map(year => {
             return (
-              <li key={year} /*className="nav-item"*/>
-                <a className="year-tabs" href={`#${year}`}>
+              <li key={year}>
+                <button
+                  type="submit"
+                  onClick={this.changeYear}
+                  style={{border: 'none'}}
+                  value={year}
+                  className={year === this.state.year ? 'active' : null}
+                >
                   {year}
-                </a>
+                </button>
               </li>
             )
           })}
