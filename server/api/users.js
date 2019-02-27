@@ -32,6 +32,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   const {id} = req.user.dataValues
   req.body.userId = id
+  // need to get schoolId to match school from rec
   try {
     const user = await UserInfo.create(req.body)
     res.json(user)
@@ -41,7 +42,6 @@ router.post('/', async (req, res, next) => {
 })
 
 router.put('/', async (req, res, next) => {
-  console.log('here is the req.body: ', req.body)
   const {id} = req.user.dataValues
   req.body.userId = id
   try {
