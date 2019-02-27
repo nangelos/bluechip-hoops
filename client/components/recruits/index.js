@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import RecruitTable from './table'
+import TabRow from './tabs'
 
 const recruitList = [
   {
@@ -35,7 +36,16 @@ const recruitList = [
 ]
 
 class Recruits extends Component {
-  state = {}
+  state = {year: 2019}
+
+  years = [2019, 2020, 2021, 2022]
+
+  changeYear = evt => {
+    evt.preventDefault()
+    console.log(evt.target.type)
+    const {value} = evt.target
+    this.setState({year: value})
+  }
 
   componentDidMount() {
     console.log('get school/recruit info')
@@ -45,6 +55,11 @@ class Recruits extends Component {
     return (
       <div align="center">
         <h1>This is the recruits page for {}</h1>
+        <TabRow
+          state={this.state}
+          years={this.years}
+          changeYear={this.changeYear}
+        />
         <RecruitTable recruitList={recruitList} />
       </div>
     )

@@ -1,36 +1,25 @@
 import React, {Component} from 'react'
 
 class RecruitTable extends Component {
-  state = {year: 2019}
+  state = {
+    fullName: '',
+    highSchool: '',
+    position: '',
+    height: '',
+    weight: '',
+    rivalsRanking: '',
+    espnRanking: '',
+    class: ''
+  }
 
-  years = [2019, 2020, 2021, 2022]
-
-  changeYear = evt => {
-    const {value} = evt.target
-    this.setState({year: value})
+  handleChange = evt => {
+    console.log('handle change in input for adding new recruit')
   }
 
   render() {
     const {recruitList} = this.props
     return (
       <div>
-        <ul className="tab-row">
-          {this.years.map(year => {
-            return (
-              <li key={year}>
-                <button
-                  type="submit"
-                  onClick={this.changeYear}
-                  style={{border: 'none'}}
-                  value={year}
-                  className={year === this.state.year ? 'active' : null}
-                >
-                  {year}
-                </button>
-              </li>
-            )
-          })}
-        </ul>
         <table style={{border: 'solid, white, 2px'}}>
           <tbody>
             <tr>
