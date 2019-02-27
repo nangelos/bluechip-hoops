@@ -44,3 +44,23 @@ form div {
   padding-left: 5px;
 }
 
+.recruits-header {
+  background-color: rgba(207, 210, 214, 0.5);
+  border: white solid 1px;
+  text-align: center;
+  height: 40px;
+  padding: 2px 10px;
+}
+
+.even-row {
+  background-color: rgba(207, 210, 214, 0.8);
+  border: white solid 1px;
+  padding: 2px 10px;
+}
+
+.odd-row {
+  background-color: rgba(207, 210, 214, 0.3);
+  border: white solid 1px;
+  padding: 2px 5px;
+
+}
