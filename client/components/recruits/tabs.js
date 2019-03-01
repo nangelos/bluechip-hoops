@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Tab = styled.button`
-  font-weight: ${props => (props.selectedYear ? 'bold' : 'normal')};
+  font-weight: ${props => (props.active ? 'bold' : 'normal')};
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
   border: 2px solid transparent;
@@ -27,11 +27,11 @@ const TabRow = props => {
           return (
             <Tab
               key={year}
+              active={year === selectedYear}
               type="submit"
-              onClick={changeYear}
+              onClick={() => changeYear(year)}
               style={{border: 'none'}}
               value={year}
-              // className={year === selectedYear ? 'active' : null}
             >
               {year}
             </Tab>
