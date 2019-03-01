@@ -20,7 +20,7 @@ class RecruitTable extends Component {
   }
 
   render() {
-    const {recruitList} = this.props
+    const {recruitList, selectedYear} = this.props
     return (
       <div>
         <table style={{border: 'solid, white, 2px'}}>
@@ -36,57 +36,59 @@ class RecruitTable extends Component {
               <th className="recruits-header">Class</th>
             </tr>
             {/*eslint-disable complexity*/}
-            {recruitList.map((player, i) => {
-              return (
-                <tr key={player.fullName}>
-                  <td className={i % 2 === 0 ? 'odd-row' : 'even-row'}>
-                    {player.fullName}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.position}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.height}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.weight}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.highSchool}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.rivalsRanking}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.espnRanking}
-                  </td>
-                  <td
-                    className={i % 2 === 0 ? 'odd-row' : 'even-row'}
-                    style={{textAlign: 'center'}}
-                  >
-                    {player.class}
-                  </td>
-                </tr>
-              )
-            })}
+            {recruitList
+              .filter(p => Number(p.class) === selectedYear)
+              .map((player, i) => {
+                return (
+                  <tr key={player.fullName}>
+                    <td className={i % 2 === 0 ? 'odd-row' : 'even-row'}>
+                      {player.fullName}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.position}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.height}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.weight}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.highSchool}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.rivalsRanking}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.espnRanking}
+                    </td>
+                    <td
+                      className={i % 2 === 0 ? 'odd-row' : 'even-row'}
+                      style={{textAlign: 'center'}}
+                    >
+                      {player.class}
+                    </td>
+                  </tr>
+                )
+              })}
           </tbody>
         </table>
         <NewRecruit handleTextChange={this.handleTextChange} />

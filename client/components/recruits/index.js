@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import RecruitTable from './table'
-import TabRow from './tabs'
+import TabRow from './tab-row'
 
 const recruitList = [
   {
@@ -11,7 +11,7 @@ const recruitList = [
     weight: '195',
     rivalsRanking: '1',
     espnRanking: '1',
-    class: '2019'
+    class: '2020'
   },
   {
     fullName: 'LeBron James',
@@ -57,7 +57,10 @@ class Recruits extends Component {
           years={this.years}
           changeYear={this.changeYear}
         />
-        <RecruitTable recruitList={recruitList} />
+        <RecruitTable
+          recruitList={recruitList}
+          selectedYear={this.state.selectedYear}
+        />
       </div>
     )
   }

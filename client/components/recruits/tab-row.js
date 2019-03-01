@@ -19,7 +19,6 @@ const AllTabs = styled.ul`
 `
 const TabRow = props => {
   let {changeYear, years, selectedYear} = props
-  console.log('tab.js props: ', props)
   return (
     <div>
       <AllTabs>
