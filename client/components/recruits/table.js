@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import NewRecruit from './new-recruit'
 
 class RecruitTable extends Component {
   state = {
@@ -12,8 +13,10 @@ class RecruitTable extends Component {
     class: ''
   }
 
-  handleChange = evt => {
-    console.log('handle change in input for adding new recruit')
+  handleTextChange = evt => {
+    console.log('evt.target: ', evt.target)
+    const {name, value} = evt.target
+    this.setState({[name]: value})
   }
 
   render() {
@@ -86,6 +89,7 @@ class RecruitTable extends Component {
             })}
           </tbody>
         </table>
+        <NewRecruit handleTextChange={this.handleTextChange} />
       </div>
     )
   }
