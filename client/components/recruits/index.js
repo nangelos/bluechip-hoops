@@ -36,15 +36,14 @@ const recruitList = [
 ]
 
 class Recruits extends Component {
-  state = {year: 2019}
+  state = {selectedYear: 2020}
 
   years = [2019, 2020, 2021, 2022]
 
   changeYear = evt => {
     evt.preventDefault()
-    console.log(evt.target.type)
     const {value} = evt.target
-    this.setState({year: value})
+    this.setState({selectedYear: value})
   }
 
   componentDidMount() {
@@ -56,7 +55,7 @@ class Recruits extends Component {
       <div align="center">
         <h1>This is the recruits page for {}</h1>
         <TabRow
-          state={this.state}
+          selectedYear={this.state.selectedYear}
           years={this.years}
           changeYear={this.changeYear}
         />

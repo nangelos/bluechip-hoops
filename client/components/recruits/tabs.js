@@ -1,7 +1,8 @@
 import React from 'react'
 
-const TabRow = state => {
-  const {changeYear, years} = state
+const TabRow = props => {
+  let {changeYear, years, selectedYear} = props
+  console.log('tab.js props: ', props)
   return (
     <div>
       <ul className="tab-row">
@@ -13,7 +14,7 @@ const TabRow = state => {
                 onClick={changeYear}
                 style={{border: 'none'}}
                 value={year}
-                className={state.state.year === year ? 'active' : 'inactive'}
+                className={year === selectedYear ? 'active' : null}
               >
                 {year}
               </button>
