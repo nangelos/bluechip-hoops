@@ -49,6 +49,7 @@ class Recruits extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div align="center">
         <h1>This is the recruits page for {}</h1>

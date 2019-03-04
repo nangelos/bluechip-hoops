@@ -2,6 +2,16 @@
   "root": true,
   "extends": ["fullstack", "prettier", "prettier/react"],
   "rules": {
-    "semi": 0
+    "semi": 0,
+    "no-useless-return": 1,
+    "no-unused-vars": 1,
+    "no-undef": 1,
+    "lines-between-class-members": 1,
+    "padding-line-between-statements": [
+      1,
+      { "blankLine": "always", "prev": ["block-like", "export", "function", "multiline-expression"], "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": ["block-like", "export", "function"] },
+      { "blankLine": "any", "prev": ["export", "case", "default"], "next": ["export", "case", "default"] }
+    ]
   }
 }
