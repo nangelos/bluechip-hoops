@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import RecruitTable from './table'
 import TabRow from './tab-row'
+import NewRecruit from './new-recruit'
 
 const recruitList = [
   {
@@ -62,6 +63,7 @@ class Recruits extends Component {
           recruitList={recruitList}
           selectedYear={this.state.selectedYear}
         />
+        <NewRecruit handleTextChange={this.handleTextChange} />
       </div>
     )
   }

@@ -1,24 +1,6 @@
 import React, {Component} from 'react'
-import NewRecruit from './new-recruit'
 
 class RecruitTable extends Component {
-  state = {
-    fullName: '',
-    highSchool: '',
-    position: '',
-    height: '',
-    weight: '',
-    rivalsRanking: '',
-    espnRanking: '',
-    class: ''
-  }
-
-  handleTextChange = evt => {
-    console.log('evt.target: ', evt.target)
-    const {name, value} = evt.target
-    this.setState({[name]: value})
-  }
-
   render() {
     const {recruitList, selectedYear} = this.props
     return (
@@ -91,7 +73,6 @@ class RecruitTable extends Component {
               })}
           </tbody>
         </table>
-        <NewRecruit handleTextChange={this.handleTextChange} />
       </div>
     )
   }

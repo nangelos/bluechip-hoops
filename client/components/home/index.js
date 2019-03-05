@@ -35,6 +35,7 @@ const mapState = state => {
     id: state.user.id
   }
 }
+
 const mapDispatch = dispatch => ({
   getUserInfo: userId => dispatch(fetchUserInfo(userId))
 })

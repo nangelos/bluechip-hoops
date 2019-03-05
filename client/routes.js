@@ -25,12 +25,12 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <RootContext>
-              <Route path="/recruits" component={Recruits} />
-              <Route path="/calendar" component={Calendar} />
-              <Route path="/staff" component={Staff} />
-              <Route path="/" component={UserHome} />
-            </RootContext>
+            {/* <RootContext.Consumer> */}
+            <Route path="/recruits" component={Recruits} />
+            <Route path="/calendar" component={Calendar} />
+            <Route path="/staff" component={Staff} />
+            <Route path="/" component={UserHome} />
+            {/* </RootContext.Consumer> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
