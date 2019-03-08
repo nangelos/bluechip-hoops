@@ -8,14 +8,15 @@ const Tab = styled.button`
   border: 2px solid transparent;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
-  padding: 5px;
   width: 70px;
 `
 
-const AllTabs = styled.ul`
+const AllTabs = styled.div`
   display: flex;
   margin-bottom: 0px;
   height: 40px;
+  flex-align: left;
+  margin-left: 0px;
 `
 
 const TabRow = props => {
@@ -30,7 +31,6 @@ const TabRow = props => {
               active={year === selectedYear}
               type="submit"
               onClick={() => changeYear(year)}
-              style={{border: 'none'}}
               value={year}
             >
               {year}

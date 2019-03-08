@@ -26,8 +26,6 @@ function UserHome({id}) {
   )
 }
 
-// UserHome.contextType = RootContext for class only
-
 /**
  * CONTAINER
  */

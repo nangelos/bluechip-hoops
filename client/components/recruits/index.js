@@ -2,6 +2,18 @@ import React, {Component} from 'react'
 import RecruitTable from './table'
 import TabRow from './tab-row'
 import NewRecruit from './new-recruit'
+import {RootContext} from '../../RootProvider'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-around;
+  height: 100%;
+`
 
 const recruitList = [
   {
@@ -50,9 +62,10 @@ class Recruits extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const userInfo = this.context.user['user-info']
+    console.log('here is userInfo: ', userInfo)
     return (
-      <div align="center">
+      <Wrapper>
         <h1>This is the recruits page for {}</h1>
         <TabRow
           selectedYear={this.state.selectedYear}
@@ -64,9 +77,11 @@ class Recruits extends Component {
           selectedYear={this.state.selectedYear}
         />
         <NewRecruit handleTextChange={this.handleTextChange} />
-      </div>
+      </Wrapper>
     )
   }
 }
+
+Recruits.contextType = RootContext
 
 export default Recruits
