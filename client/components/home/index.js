@@ -1,50 +1,41 @@
-import React, {Component} from 'react'
-import {fetchUserInfo} from '../../store'
+import React, {useContext, useEffect} from 'react'
+import axios from 'axios'
 import UserData from './update-info'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {RootContext} from '../../RootProvider'
 
 /**
  * COMPONENT
  */
 
-class UserHome extends Component {
-  state = {}
+function UserHome({id}) {
+  const {setCurrentUser, user} = useContext(RootContext)
+  const userInfo = user['user-info']
+  useEffect(() => {
+    axios.get(`/api/users/${id}`).then(res => setCurrentUser(res.data))
+  }, [])
 
-  componentDidMount() {
-    const {getUserInfo, id} = this.props
-    getUserInfo(id)
+  if (!userInfo) {
+    return <h1>Loading</h1>
   }
 
-  render() {
-    const {email} = this.props
-    return (
-      <div>
-        <UserData userInfo={this.props.userInfo} />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <UserData userInfo={userInfo} />
+    </div>
+  )
 }
+
+// UserHome.contextType = RootContext for class only
 
 /**
  * CONTAINER
  */
 const mapState = state => {
   return {
-    email: state.user.email,
+    // email: state.user.email,
     id: state.user.id
   }
 }
 
-const mapDispatch = dispatch => ({
-  getUserInfo: userId => dispatch(fetchUserInfo(userId))
-})
-
-export default connect(mapState, mapDispatch)(UserHome)
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-}
+export default connect(mapState)(UserHome)

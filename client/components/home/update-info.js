@@ -13,21 +13,26 @@ class UserData extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault()
-    const {userInfo} = this.props.state
+    const {userInfo} = this.props
     const {createUserInfo, updateUserInfo} = this.props
+
     if (!userInfo['user-info']) {
       createUserInfo(this.state)
     } else {
       const {firstName, lastName, school, role} = userInfo['user-info']
+
       const checkInfo = async () => {
         let res
+
         try {
           res = await this.checkEmpty(firstName, lastName, school, role)
         } catch (err) {
           console.error(err)
         }
+
         updateUserInfo(this.state)
       }
+
       checkInfo()
     }
   }
@@ -36,12 +41,15 @@ class UserData extends Component {
     if (this.state.firstName === '') {
       this.setState({firstName: first})
     }
+
     if (this.state.lastName === '') {
       this.setState({lastName: last})
     }
+
     if (this.state.school === '') {
       this.setState({school: place})
     }
+
     if (this.state.role === '') {
       this.setState({role: job})
     }
@@ -57,10 +65,13 @@ class UserData extends Component {
   }
 
   render() {
-    let info = this.props.state.userInfo['user-info']
-    return info ? (
+    console.log('this.props: ', this.props)
+    const {userInfo} = this.props
+
+    const {userId, firstName, lastName, role, school, schoolId} = userInfo
+    return userId ? (
       <div>
-        <h2>Welcome Coach {info.lastName}</h2>
+        <h2>Welcome Coach {lastName}</h2>
         <div style={{textAlign: 'center'}}>
           <h3>Update User Info</h3>
           <div>
@@ -71,7 +82,7 @@ class UserData extends Component {
                   <input
                     type="text"
                     name="firstName"
-                    placeholder={info.firstName}
+                    placeholder={firstName}
                     className="user-info-input"
                     onChange={this.handleTextChange}
                   />
@@ -81,7 +92,7 @@ class UserData extends Component {
                   <input
                     type="text"
                     name="lastName"
-                    placeholder={info.lastName}
+                    placeholder={lastName}
                     className="user-info-input"
                     onChange={this.handleTextChange}
                   />
@@ -91,7 +102,7 @@ class UserData extends Component {
                   <select
                     name="school"
                     onChange={this.cantChange}
-                    value={info.school}
+                    value={school}
                   >
                     {collegeList.map((school, i) => {
                       return (
@@ -104,11 +115,7 @@ class UserData extends Component {
                 </div>
                 <div className="user-input-row">
                   Role <br />
-                  <select
-                    name="role"
-                    onChange={this.cantChange}
-                    value={info.role}
-                  >
+                  <select name="role" onChange={this.cantChange} value={role}>
                     <option value="Head Coach">Head Coach</option>
                     <option value="Assistant Coach">Assistant Coach</option>
                   </select>

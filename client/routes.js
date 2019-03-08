@@ -4,7 +4,6 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, Recruits, Calendar, Staff} from './components'
 import {me} from './store'
-import {RootContext} from './RootProvider'
 
 /**
  * COMPONENT
@@ -25,12 +24,10 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            {/* <RootContext.Consumer> */}
             <Route path="/recruits" component={Recruits} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/staff" component={Staff} />
             <Route path="/" component={UserHome} />
-            {/* </RootContext.Consumer> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
