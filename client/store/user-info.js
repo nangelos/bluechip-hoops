@@ -28,6 +28,7 @@ const deleteUserInfo = user => ({type: DELETE_USER_INFO, user})
 
 export const fetchUserInfo = userId => async dispatch => {
   let res
+
   try {
     res = await axios.get(`/api/users/${userId}`)
     dispatch(getUserInfo(res.data))
@@ -38,11 +39,13 @@ export const fetchUserInfo = userId => async dispatch => {
 
 export const addUserInfo = info => async dispatch => {
   let res
+
   try {
     res = await axios.post(`/api/users`, info)
   } catch (err) {
     console.error(err)
   }
+
   try {
     dispatch(createUserInfo(res.data))
   } catch (err) {
@@ -52,11 +55,13 @@ export const addUserInfo = info => async dispatch => {
 
 export const changeUserInfo = info => async dispatch => {
   let res
+
   try {
     res = await axios.put('/api/users', info)
   } catch (err) {
     console.error(err)
   }
+
   try {
     dispatch(updateUserInfo(res.data))
   } catch (err) {

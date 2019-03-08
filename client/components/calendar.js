@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 
 class Calendar extends Component {
   state = {}
+
   url = 'https://calendar.google.com/calendar/embed?src=6n9c5qnu4i4a9d2v5qtmo8fqj0%40group.calendar.google.com&ctz=America%2FChicago'
+
   style = 'border: 0'
 
   render() {

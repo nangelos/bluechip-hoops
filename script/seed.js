@@ -23,6 +23,7 @@ async function seed() {
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
   console.log('seeding...')
+
   try {
     await seed()
   } catch (err) {

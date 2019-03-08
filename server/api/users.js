@@ -19,6 +19,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   const {id} = req.params
+
   try {
     const user = await User.findById(id, {
       include: [UserInfo]
@@ -32,6 +33,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   const {id} = req.user.dataValues
   req.body.userId = id
+
   // need to get schoolId to match school from rec
   try {
     const user = await UserInfo.create(req.body)
@@ -44,6 +46,7 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   const {id} = req.user.dataValues
   req.body.userId = id
+
   try {
     const user = await UserInfo.update(req.body, {where: {userId: id}})
     res.json(user)
