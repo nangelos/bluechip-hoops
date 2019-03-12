@@ -66,7 +66,11 @@ class Recruits extends Component {
     console.log('here is userInfo: ', userInfo)
     return (
       <Wrapper>
-        <h1>This is the recruits page for {}</h1>
+        {userInfo ? (
+          <h1>This is the recruits page for {userInfo.school}</h1>
+        ) : (
+          ''
+        )}
         <TabRow
           selectedYear={this.state.selectedYear}
           years={this.years}
