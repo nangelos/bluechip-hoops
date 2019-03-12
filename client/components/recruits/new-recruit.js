@@ -5,11 +5,11 @@ import styled from 'styled-components'
 const InputRow = styled.div`
   display: flex;
   width: 100%;
+  justify: space-around;
 `
 
 const DBInput = styled.p`
-  height: 20px;
-  background-color: purple;
+  margin: 0px;
 `
 
 class NewRecruit extends Component {
@@ -50,7 +50,7 @@ class NewRecruit extends Component {
             </tr>
           </tbody>
         </table>
-        <form onSubmit={this.handleSubmit} style={{display: 'flex'}}>
+        <form onSubmit={this.handleSubmit} style={{margin: '0px'}}>
           <InputRow>
             <DBInput>
               <input
@@ -65,6 +65,7 @@ class NewRecruit extends Component {
             <DBInput style={{textAlign: 'center'}}>
               <select
                 className="even-row"
+                style={{pading: '0px 5px'}}
                 type="text"
                 name="position"
                 onChange={this.handleTextChange}
