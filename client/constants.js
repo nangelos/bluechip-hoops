@@ -706,7 +706,18 @@ const collegeArray = [
   {college: 'Youngstown State University', mascot: 'Penguins'}
 ]
 
+const rivalsDB = {
+  2019: 3557,
+  2020: 3566,
+  2021: 3572
+}
+const rivalsUrl = year =>
+  `https://n.rivals.com/api/v1/ranks/${
+    rivalsDB[year]
+  }/prospects?start=0&position=ALL%20POSITIONS&pageSize=150`
+
 module.exports = {
   collegeList,
-  collegeArray
+  collegeArray,
+  rivalsUrl
 }
