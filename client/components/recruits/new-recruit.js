@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import history from '../../history'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 
@@ -21,20 +22,7 @@ class NewRecruit extends Component {
     weight: '',
     rivalsRanking: 'N/A',
     espnRanking: 'N/A',
-    class: ''
-  }
-
-  resetState = () => {
-    this.setState({
-      fullName: '',
-      highSchool: '',
-      position: 'PG',
-      height: '',
-      weight: '',
-      rivalsRanking: 'N/A',
-      espnRanking: 'N/A',
-      class: ''
-    })
+    class: '2019'
   }
 
   handleTextChange = evt => {
@@ -46,7 +34,8 @@ class NewRecruit extends Component {
     evt.preventDefault()
     const {recruitList} = this.props
     recruitList.push(this.state)
-    this.resetState()
+    document.getElementById('RecruitForm').reset()
+    history.push('/recruits')
   }
 
   render() {
@@ -65,7 +54,11 @@ class NewRecruit extends Component {
             </tr>
           </tbody>
         </table>
-        <form onSubmit={this.handleSubmit} style={{margin: '0px'}}>
+        <form
+          id="RecruitForm"
+          onSubmit={this.handleSubmit}
+          style={{margin: '0px'}}
+        >
           <InputRow>
             <DBInput>
               <input
