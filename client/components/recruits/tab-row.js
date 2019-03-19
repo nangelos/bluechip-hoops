@@ -17,6 +17,7 @@ const AllTabs = styled.div`
   height: 40px;
   flex-align: left;
   margin-left: 0px;
+  width: 100%;
 `
 
 const TabRow = props => {

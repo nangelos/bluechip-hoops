@@ -80,7 +80,10 @@ class Recruits extends Component {
           recruitList={recruitList}
           selectedYear={this.state.selectedYear}
         />
-        <NewRecruit handleTextChange={this.handleTextChange} />
+        <NewRecruit
+          recruitList={recruitList}
+          handleTextChange={this.handleTextChange}
+        />
       </Wrapper>
     )
   }

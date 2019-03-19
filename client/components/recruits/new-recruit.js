@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const InputRow = styled.div`
   display: flex;
   width: 100%;
-  justify: space-around;
+  justify: space-between;
 `
 
 const DBInput = styled.p`
@@ -16,22 +16,37 @@ class NewRecruit extends Component {
   state = {
     fullName: '',
     highSchool: '',
-    position: '',
+    position: 'PG',
     height: '',
     weight: '',
-    rivalsRanking: '',
-    espnRanking: '',
+    rivalsRanking: 'N/A',
+    espnRanking: 'N/A',
     class: ''
   }
 
+  resetState = () => {
+    this.setState({
+      fullName: '',
+      highSchool: '',
+      position: 'PG',
+      height: '',
+      weight: '',
+      rivalsRanking: 'N/A',
+      espnRanking: 'N/A',
+      class: ''
+    })
+  }
+
   handleTextChange = evt => {
-    console.log('evt.target: ', evt.target)
     const {name, value} = evt.target
     this.setState({[name]: value})
   }
 
-  handleSubmit() {
-    console.log('send to create prospect: ', this.state)
+  handleSubmit = evt => {
+    evt.preventDefault()
+    const {recruitList} = this.props
+    recruitList.push(this.state)
+    this.resetState()
   }
 
   render() {
@@ -118,7 +133,7 @@ class NewRecruit extends Component {
             </DBInput>
           </InputRow>
           <br />
-          <input type="submit" value="Update" />
+          <input type="submit" value="Add Player" />
         </form>
       </div>
     )
